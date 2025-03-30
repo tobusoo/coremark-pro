@@ -1,5 +1,5 @@
-#  File: util/make/gcc64.mak
-#	GCC Tool Definitions, Host Compile and Run, for 64b system
+#  File: util/make/clang64.mak
+#	Clang Tool Definitions, Host Compile and Run, for 64b system
 #
 #  EEMBC : Technical Advisory Group (TechTAG)
 #------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ TOOLS	?= /usr
 # Variable: CC
 #	name of the compiler
 CC		= $(TOOLS)/bin/clang
-# Solaris: /usr/ccs/bin/as requires space after -o passed from gcc.
+# Solaris: /usr/ccs/bin/as requires space after -o passed from clang.
 #OBJOUT = -o \#
 OBJOUT	= -o
 COBJT	= -c
@@ -78,7 +78,9 @@ INCLUDE = $(TOOLS)/include
 # -O0			 Do not optimize
 # -O2			 Optimize for speed
 
-COMPILER_FLAGS	= -g -O2 $(CDEFN)NDEBUG $(CDEFN)HOST_EXAMPLE_CODE=1 -std=gnu99  
+ARCH = rv64gc_zicond
+
+COMPILER_FLAGS	= -march=$(ARCH) -g -O2 $(CDEFN)NDEBUG $(CDEFN)HOST_EXAMPLE_CODE=1 -std=gnu99  
 COMPILER_NOOPT	= -O0 -g $(CDEFN)NDEBUG $(CDEFN)HOST_EXAMPLE_CODE=1
 COMPILER_DEBUG	= -O0 -g $(CDEFN)HOST_EXAMPLE_CODE=1 -DBMDEBUG=1 -DTHDEBUG=1
 PACK_OPTS = 
