@@ -78,7 +78,7 @@ INCLUDE = $(TOOLS)/include
 # -O0			 Do not optimize
 # -O2			 Optimize for speed
 
-ARCH = rv64gc_zicond
+ARCH ?= rv64gc_zicond
 
 COMPILER_FLAGS	= -march=$(ARCH) -g -O2 $(CDEFN)NDEBUG $(CDEFN)HOST_EXAMPLE_CODE=1 -std=gnu99  
 COMPILER_NOOPT	= -O0 -g $(CDEFN)NDEBUG $(CDEFN)HOST_EXAMPLE_CODE=1
